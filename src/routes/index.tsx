@@ -139,8 +139,7 @@ function Hero() {
         aria-hidden
         className="absolute top-20 -left-20 h-[500px] w-[500px] rounded-full opacity-50 -z-10"
         style={{
-          background:
-            "radial-gradient(circle, oklch(0.85 0.1 290 / 0.5), transparent 65%)",
+          background: "radial-gradient(circle, oklch(0.85 0.1 290 / 0.5), transparent 65%)",
         }}
       />
 
@@ -495,8 +494,7 @@ function StatsBand() {
       <div
         className="max-w-[1400px] mx-auto rounded-3xl p-10 lg:p-12 relative overflow-hidden"
         style={{
-          background:
-            "linear-gradient(135deg, oklch(0.18 0.05 280) 0%, oklch(0.13 0.04 280) 100%)",
+          background: "linear-gradient(135deg, oklch(0.18 0.05 280) 0%, oklch(0.13 0.04 280) 100%)",
         }}
       >
         {/* glow */}
