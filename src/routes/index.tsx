@@ -21,6 +21,7 @@ import {
   MapPin,
   Gift,
   Heart,
+  type LucideIcon,
 } from "lucide-react";
 import foundersImg from "@/assets/founders-pune.jpg";
 
@@ -52,7 +53,15 @@ function Landing() {
 /* ───────────────────────────── NAV ───────────────────────────── */
 
 function Nav() {
-  const links = ["Community", "Spaces", "Open to Build", "Events", "Build in Public", "Resources"];
+  const links = [
+    { label: "Community", href: "#community" },
+    { label: "Spaces", href: "#spaces" },
+    { label: "Open to Build", href: "#open-to-build" },
+    { label: "Events", href: "#events" },
+    { label: "Build in Public", href: "#build-in-public" },
+    { label: "Resources", href: "#resources" },
+  ];
+
   return (
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/60">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center gap-8">
@@ -71,22 +80,28 @@ function Nav() {
         <nav className="hidden lg:flex items-center gap-7 mx-auto">
           {links.map((l) => (
             <a
-              key={l}
-              href="#"
+              key={l.label}
+              href={l.href}
               className="text-sm text-foreground/80 hover:text-brand transition-colors font-medium"
             >
-              {l}
+              {l.label}
             </a>
           ))}
         </nav>
 
         <div className="ml-auto lg:ml-0 flex items-center gap-2">
-          <button className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition">
+          <a
+            href="#resources"
+            className="hidden sm:inline-flex items-center h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition"
+          >
             Log in
-          </button>
-          <button className="h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition">
+          </a>
+          <a
+            href="#community"
+            className="inline-flex items-center h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition"
+          >
             Join the Community
-          </button>
+          </a>
         </div>
       </div>
     </header>
@@ -113,7 +128,7 @@ function Logo() {
 
 function Hero() {
   return (
-    <section className="relative">
+    <section id="community" className="relative scroll-mt-24">
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
@@ -168,14 +183,20 @@ function Hero() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <button className="group inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl bg-brand text-brand-foreground font-semibold text-[15px] shadow-soft hover:shadow-glow transition">
+              <a
+                href="#community"
+                className="group inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl bg-brand text-brand-foreground font-semibold text-[15px] shadow-soft hover:shadow-glow transition"
+              >
                 Join the Community
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-              <button className="inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl border border-brand/30 bg-card text-brand font-semibold text-[15px] hover:bg-brand-soft transition">
+              </a>
+              <a
+                href="#spaces"
+                className="inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl border border-brand/30 bg-card text-brand font-semibold text-[15px] hover:bg-brand-soft transition"
+              >
                 Explore Spaces
                 <LayoutGrid className="h-4 w-4" />
-              </button>
+              </a>
             </div>
 
             <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
@@ -204,10 +225,34 @@ function Hero() {
               <div className="text-[13px] font-semibold mb-3">Community Spaces</div>
               <ul className="space-y-2.5">
                 {[
-                  { icon: HeartPulse, color: "text-pink", bg: "bg-pink/10", name: "HealthTech", count: "234 members" },
-                  { icon: Coins, color: "text-mint", bg: "bg-mint/15", name: "FinTech", count: "180 members" },
-                  { icon: Cpu, color: "text-violet", bg: "bg-violet/15", name: "AI / ML", count: "312 members" },
-                  { icon: TrendingUp, color: "text-amber", bg: "bg-amber/15", name: "SaaS", count: "420 members" },
+                  {
+                    icon: HeartPulse,
+                    color: "text-pink",
+                    bg: "bg-pink/10",
+                    name: "HealthTech",
+                    count: "234 members",
+                  },
+                  {
+                    icon: Coins,
+                    color: "text-mint",
+                    bg: "bg-mint/15",
+                    name: "FinTech",
+                    count: "180 members",
+                  },
+                  {
+                    icon: Cpu,
+                    color: "text-violet",
+                    bg: "bg-violet/15",
+                    name: "AI / ML",
+                    count: "312 members",
+                  },
+                  {
+                    icon: TrendingUp,
+                    color: "text-amber",
+                    bg: "bg-amber/15",
+                    name: "SaaS",
+                    count: "420 members",
+                  },
                 ].map((s) => (
                   <li key={s.name} className="flex items-center gap-3">
                     <div className={`h-8 w-8 rounded-lg grid place-items-center ${s.bg}`}>
@@ -222,7 +267,7 @@ function Hero() {
                 ))}
               </ul>
               <a
-                href="#"
+                href="#spaces"
                 className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand"
               >
                 View all spaces <ArrowRight className="h-3 w-3" />
@@ -250,7 +295,10 @@ function Hero() {
             </div>
 
             {/* Next event card */}
-            <div className="absolute top-[36%] right-[-2%] sm:right-[2%] w-[44%] max-w-[220px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slow">
+            <div
+              id="events"
+              className="absolute top-[36%] right-[-2%] sm:right-[2%] w-[44%] max-w-[220px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slow scroll-mt-24"
+            >
               <div className="text-[10px] uppercase tracking-wider text-brand font-bold">
                 Next Event
               </div>
@@ -265,7 +313,10 @@ function Hero() {
                   <MapPin className="h-3 w-3" /> Pune, India
                 </div>
               </div>
-              <a className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand">
+              <a
+                href="#events"
+                className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand"
+              >
                 Register Now <ArrowRight className="h-3 w-3" />
               </a>
               <div className="absolute -top-3 -right-3 h-9 w-9 rounded-xl bg-brand grid place-items-center shadow-soft">
@@ -274,7 +325,10 @@ function Hero() {
             </div>
 
             {/* Open to Build card */}
-            <div className="absolute bottom-[2%] left-[12%] sm:left-[18%] w-[58%] max-w-[280px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slower">
+            <div
+              id="open-to-build"
+              className="absolute bottom-[2%] left-[12%] sm:left-[18%] w-[58%] max-w-[280px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slower scroll-mt-24"
+            >
               <div className="text-[12px] font-semibold">Open to Build</div>
               <div className="text-[10px] text-muted-foreground">23 opportunities</div>
               <div className="mt-3 flex items-center justify-between">
@@ -290,9 +344,12 @@ function Hero() {
                     +18
                   </span>
                 </div>
-                <button className="h-8 px-3 rounded-full bg-brand-soft text-brand text-[11px] font-semibold hover:bg-brand hover:text-brand-foreground transition">
+                <a
+                  href="#open-to-build"
+                  className="inline-flex items-center h-8 px-3 rounded-full bg-brand-soft text-brand text-[11px] font-semibold hover:bg-brand hover:text-brand-foreground transition"
+                >
                   Explore Now
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -308,7 +365,7 @@ function Trust({
   sub,
   tone,
 }: {
-  icon: any;
+  icon: LucideIcon;
   label: string;
   sub: string;
   tone: string;
@@ -375,7 +432,7 @@ function FeatureRow() {
   ];
 
   return (
-    <section className="px-6 lg:px-10 pb-20">
+    <section id="spaces" className="px-6 lg:px-10 pb-20 scroll-mt-24">
       <div className="max-w-[1400px] mx-auto rounded-3xl border border-border bg-card shadow-soft p-8 lg:p-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {features.map((f) => (
@@ -399,14 +456,42 @@ function FeatureRow() {
 
 function StatsBand() {
   const stats = [
-    { icon: Users, value: "700+", label: "Founders & Builders", sub: "And growing every day", color: "text-brand", ring: "ring-brand/30" },
-    { icon: Building2, value: "12+", label: "Community Spaces", sub: "Across domains", color: "text-mint", ring: "ring-mint/30" },
-    { icon: Rocket, value: "2", label: "Successful Events", sub: "And many more to come", color: "text-amber", ring: "ring-amber/30" },
-    { icon: Target, value: "1", label: "Mission", sub: "Build Pune Together", color: "text-pink", ring: "ring-pink/30" },
+    {
+      icon: Users,
+      value: "700+",
+      label: "Founders & Builders",
+      sub: "And growing every day",
+      color: "text-brand",
+      ring: "ring-brand/30",
+    },
+    {
+      icon: Building2,
+      value: "12+",
+      label: "Community Spaces",
+      sub: "Across domains",
+      color: "text-mint",
+      ring: "ring-mint/30",
+    },
+    {
+      icon: Rocket,
+      value: "2",
+      label: "Successful Events",
+      sub: "And many more to come",
+      color: "text-amber",
+      ring: "ring-amber/30",
+    },
+    {
+      icon: Target,
+      value: "1",
+      label: "Mission",
+      sub: "Build Pune Together",
+      color: "text-pink",
+      ring: "ring-pink/30",
+    },
   ];
 
   return (
-    <section className="px-6 lg:px-10 pb-24">
+    <section id="build-in-public" className="px-6 lg:px-10 pb-24 scroll-mt-24">
       <div
         className="max-w-[1400px] mx-auto rounded-3xl p-10 lg:p-12 relative overflow-hidden"
         style={{
@@ -457,7 +542,7 @@ function StatsBand() {
         </div>
       </div>
 
-      <p className="text-center mt-10 text-xs text-muted-foreground">
+      <p id="resources" className="text-center mt-10 text-xs text-muted-foreground scroll-mt-24">
         Made with 💜 in Pune · © {new Date().getFullYear()} Build Pune Together
       </p>
     </section>
