@@ -21,6 +21,7 @@ import {
   MapPin,
   Gift,
   Heart,
+  type LucideIcon,
 } from "lucide-react";
 import foundersImg from "@/assets/founders-pune.jpg";
 
@@ -124,8 +125,7 @@ function Hero() {
         aria-hidden
         className="absolute top-20 -left-20 h-[500px] w-[500px] rounded-full opacity-50 -z-10"
         style={{
-          background:
-            "radial-gradient(circle, oklch(0.85 0.1 290 / 0.5), transparent 65%)",
+          background: "radial-gradient(circle, oklch(0.85 0.1 290 / 0.5), transparent 65%)",
         }}
       />
 
@@ -204,10 +204,34 @@ function Hero() {
               <div className="text-[13px] font-semibold mb-3">Community Spaces</div>
               <ul className="space-y-2.5">
                 {[
-                  { icon: HeartPulse, color: "text-pink", bg: "bg-pink/10", name: "HealthTech", count: "234 members" },
-                  { icon: Coins, color: "text-mint", bg: "bg-mint/15", name: "FinTech", count: "180 members" },
-                  { icon: Cpu, color: "text-violet", bg: "bg-violet/15", name: "AI / ML", count: "312 members" },
-                  { icon: TrendingUp, color: "text-amber", bg: "bg-amber/15", name: "SaaS", count: "420 members" },
+                  {
+                    icon: HeartPulse,
+                    color: "text-pink",
+                    bg: "bg-pink/10",
+                    name: "HealthTech",
+                    count: "234 members",
+                  },
+                  {
+                    icon: Coins,
+                    color: "text-mint",
+                    bg: "bg-mint/15",
+                    name: "FinTech",
+                    count: "180 members",
+                  },
+                  {
+                    icon: Cpu,
+                    color: "text-violet",
+                    bg: "bg-violet/15",
+                    name: "AI / ML",
+                    count: "312 members",
+                  },
+                  {
+                    icon: TrendingUp,
+                    color: "text-amber",
+                    bg: "bg-amber/15",
+                    name: "SaaS",
+                    count: "420 members",
+                  },
                 ].map((s) => (
                   <li key={s.name} className="flex items-center gap-3">
                     <div className={`h-8 w-8 rounded-lg grid place-items-center ${s.bg}`}>
@@ -308,7 +332,7 @@ function Trust({
   sub,
   tone,
 }: {
-  icon: any;
+  icon: LucideIcon;
   label: string;
   sub: string;
   tone: string;
@@ -399,10 +423,38 @@ function FeatureRow() {
 
 function StatsBand() {
   const stats = [
-    { icon: Users, value: "700+", label: "Founders & Builders", sub: "And growing every day", color: "text-brand", ring: "ring-brand/30" },
-    { icon: Building2, value: "12+", label: "Community Spaces", sub: "Across domains", color: "text-mint", ring: "ring-mint/30" },
-    { icon: Rocket, value: "2", label: "Successful Events", sub: "And many more to come", color: "text-amber", ring: "ring-amber/30" },
-    { icon: Target, value: "1", label: "Mission", sub: "Build Pune Together", color: "text-pink", ring: "ring-pink/30" },
+    {
+      icon: Users,
+      value: "700+",
+      label: "Founders & Builders",
+      sub: "And growing every day",
+      color: "text-brand",
+      ring: "ring-brand/30",
+    },
+    {
+      icon: Building2,
+      value: "12+",
+      label: "Community Spaces",
+      sub: "Across domains",
+      color: "text-mint",
+      ring: "ring-mint/30",
+    },
+    {
+      icon: Rocket,
+      value: "2",
+      label: "Successful Events",
+      sub: "And many more to come",
+      color: "text-amber",
+      ring: "ring-amber/30",
+    },
+    {
+      icon: Target,
+      value: "1",
+      label: "Mission",
+      sub: "Build Pune Together",
+      color: "text-pink",
+      ring: "ring-pink/30",
+    },
   ];
 
   return (
@@ -410,8 +462,7 @@ function StatsBand() {
       <div
         className="max-w-[1400px] mx-auto rounded-3xl p-10 lg:p-12 relative overflow-hidden"
         style={{
-          background:
-            "linear-gradient(135deg, oklch(0.18 0.05 280) 0%, oklch(0.13 0.04 280) 100%)",
+          background: "linear-gradient(135deg, oklch(0.18 0.05 280) 0%, oklch(0.13 0.04 280) 100%)",
         }}
       >
         {/* glow */}
