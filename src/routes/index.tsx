@@ -426,8 +426,8 @@ function FeatureRow() {
 
   return (
     <section id="spaces" className="px-6 lg:px-10 pb-20 scroll-mt-24">
-      <span id="events" className="block scroll-mt-24" aria-hidden />
-      <span id="open-to-build" className="block scroll-mt-24" aria-hidden />
+      <span id="events" className="block scroll-mt-24" aria-hidden="true" />
+      <span id="open-to-build" className="block scroll-mt-24" aria-hidden="true" />
       <div className="max-w-[1400px] mx-auto rounded-3xl border border-border bg-card shadow-soft p-8 lg:p-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {features.map((f) => (
@@ -487,7 +487,7 @@ function StatsBand() {
 
   return (
     <section id="build-in-public" className="px-6 lg:px-10 pb-24 scroll-mt-24">
-      <span id="resources" className="block scroll-mt-24" aria-hidden />
+      <span id="resources" className="block scroll-mt-24" aria-hidden="true" />
       <div
         className="max-w-[1400px] mx-auto rounded-3xl p-10 lg:p-12 relative overflow-hidden"
         style={{
