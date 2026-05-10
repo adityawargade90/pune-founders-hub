@@ -72,14 +72,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Build Pune Together — Pune's Founder-First Community" },
+      {
+        name: "description",
+        content:
+          "A community-first platform for founders, builders, and dreamers to connect, collaborate, and build the future of Pune.",
+      },
+      { name: "author", content: "Build Pune Together" },
+      { property: "og:title", content: "Build Pune Together — Pune's Founder-First Community" },
+      {
+        property: "og:description",
+        content:
+          "A community-first platform for founders, builders, and dreamers to connect, collaborate, and build the future of Pune.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Build Pune Together — Pune's Founder-First Community" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
