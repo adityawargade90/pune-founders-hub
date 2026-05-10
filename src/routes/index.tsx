@@ -91,7 +91,7 @@ function Nav() {
 
         <div className="ml-auto lg:ml-0 flex items-center gap-2">
           <a
-            href="#resources"
+            href="/login"
             className="hidden sm:inline-flex items-center h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition"
           >
             Log in
@@ -294,10 +294,7 @@ function Hero() {
             </div>
 
             {/* Next event card */}
-            <div
-              id="events"
-              className="absolute top-[36%] right-[-2%] sm:right-[2%] w-[44%] max-w-[220px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slow scroll-mt-24"
-            >
+            <div className="absolute top-[36%] right-[-2%] sm:right-[2%] w-[44%] max-w-[220px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slow">
               <div className="text-[10px] uppercase tracking-wider text-brand font-bold">
                 Next Event
               </div>
@@ -324,10 +321,7 @@ function Hero() {
             </div>
 
             {/* Open to Build card */}
-            <div
-              id="open-to-build"
-              className="absolute bottom-[2%] left-[12%] sm:left-[18%] w-[58%] max-w-[280px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slower scroll-mt-24"
-            >
+            <div className="absolute bottom-[2%] left-[12%] sm:left-[18%] w-[58%] max-w-[280px] rounded-2xl bg-card shadow-card border border-border/60 p-4 animate-float-slower">
               <div className="text-[12px] font-semibold">Open to Build</div>
               <div className="text-[10px] text-muted-foreground">23 opportunities</div>
               <div className="mt-3 flex items-center justify-between">
@@ -432,6 +426,8 @@ function FeatureRow() {
 
   return (
     <section id="spaces" className="px-6 lg:px-10 pb-20 scroll-mt-24">
+      <span id="events" className="block scroll-mt-24" aria-hidden />
+      <span id="open-to-build" className="block scroll-mt-24" aria-hidden />
       <div className="max-w-[1400px] mx-auto rounded-3xl border border-border bg-card shadow-soft p-8 lg:p-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {features.map((f) => (
@@ -491,6 +487,7 @@ function StatsBand() {
 
   return (
     <section id="build-in-public" className="px-6 lg:px-10 pb-24 scroll-mt-24">
+      <span id="resources" className="block scroll-mt-24" aria-hidden />
       <div
         className="max-w-[1400px] mx-auto rounded-3xl p-10 lg:p-12 relative overflow-hidden"
         style={{
@@ -540,7 +537,7 @@ function StatsBand() {
         </div>
       </div>
 
-      <p id="resources" className="text-center mt-10 text-xs text-muted-foreground scroll-mt-24">
+      <p className="text-center mt-10 text-xs text-muted-foreground">
         Made with 💜 in Pune · © {new Date().getFullYear()} Build Pune Together
       </p>
     </section>
