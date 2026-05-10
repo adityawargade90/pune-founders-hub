@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SpacesRouteImport } from './routes/spaces'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as OpenToBuildRouteImport } from './routes/open-to-build'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as BuildInPublicRouteImport } from './routes/build-in-public'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SpacesRoute = SpacesRouteImport.update({
+  id: '/spaces',
+  path: '/spaces',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenToBuildRoute = OpenToBuildRouteImport.update({
+  id: '/open-to-build',
+  path: '/open-to-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuildInPublicRoute = BuildInPublicRouteImport.update({
+  id: '/build-in-public',
+  path: '/build-in-public',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/build-in-public': typeof BuildInPublicRoute
+  '/community': typeof CommunityRoute
+  '/events': typeof EventsRoute
+  '/open-to-build': typeof OpenToBuildRoute
+  '/resources': typeof ResourcesRoute
+  '/spaces': typeof SpacesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/build-in-public': typeof BuildInPublicRoute
+  '/community': typeof CommunityRoute
+  '/events': typeof EventsRoute
+  '/open-to-build': typeof OpenToBuildRoute
+  '/resources': typeof ResourcesRoute
+  '/spaces': typeof SpacesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/build-in-public': typeof BuildInPublicRoute
+  '/community': typeof CommunityRoute
+  '/events': typeof EventsRoute
+  '/open-to-build': typeof OpenToBuildRoute
+  '/resources': typeof ResourcesRoute
+  '/spaces': typeof SpacesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/build-in-public'
+    | '/community'
+    | '/events'
+    | '/open-to-build'
+    | '/resources'
+    | '/spaces'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/build-in-public'
+    | '/community'
+    | '/events'
+    | '/open-to-build'
+    | '/resources'
+    | '/spaces'
+  id:
+    | '__root__'
+    | '/'
+    | '/build-in-public'
+    | '/community'
+    | '/events'
+    | '/open-to-build'
+    | '/resources'
+    | '/spaces'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuildInPublicRoute: typeof BuildInPublicRoute
+  CommunityRoute: typeof CommunityRoute
+  EventsRoute: typeof EventsRoute
+  OpenToBuildRoute: typeof OpenToBuildRoute
+  ResourcesRoute: typeof ResourcesRoute
+  SpacesRoute: typeof SpacesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/spaces': {
+      id: '/spaces'
+      path: '/spaces'
+      fullPath: '/spaces'
+      preLoaderRoute: typeof SpacesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/open-to-build': {
+      id: '/open-to-build'
+      path: '/open-to-build'
+      fullPath: '/open-to-build'
+      preLoaderRoute: typeof OpenToBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/build-in-public': {
+      id: '/build-in-public'
+      path: '/build-in-public'
+      fullPath: '/build-in-public'
+      preLoaderRoute: typeof BuildInPublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuildInPublicRoute: BuildInPublicRoute,
+  CommunityRoute: CommunityRoute,
+  EventsRoute: EventsRoute,
+  OpenToBuildRoute: OpenToBuildRoute,
+  ResourcesRoute: ResourcesRoute,
+  SpacesRoute: SpacesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

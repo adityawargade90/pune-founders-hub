@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   Users,
   Megaphone,
@@ -52,11 +52,18 @@ function Landing() {
 /* ───────────────────────────── NAV ───────────────────────────── */
 
 function Nav() {
-  const links = ["Community", "Spaces", "Open to Build", "Events", "Build in Public", "Resources"];
+  const links = [
+    { label: "Community", to: "/community" as const },
+    { label: "Spaces", to: "/spaces" as const },
+    { label: "Open to Build", to: "/open-to-build" as const },
+    { label: "Events", to: "/events" as const },
+    { label: "Build in Public", to: "/build-in-public" as const },
+    { label: "Resources", to: "/resources" as const },
+  ];
   return (
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/60">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center gap-8">
-        <a href="/" className="flex items-center gap-2.5 shrink-0">
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
           <Logo />
           <div className="leading-tight hidden sm:block">
             <div className="font-display text-[17px] tracking-tight">
@@ -66,27 +73,33 @@ function Nav() {
               Connect. Collaborate. Create Impact.
             </div>
           </div>
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-7 mx-auto">
-          {links.map((l) => (
-            <a
-              key={l}
-              href="#"
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
               className="text-sm text-foreground/80 hover:text-brand transition-colors font-medium"
             >
-              {l}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </nav>
 
         <div className="ml-auto lg:ml-0 flex items-center gap-2">
-          <button className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition">
+          <Link
+            to="/resources"
+            className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition items-center"
+          >
             Log in
-          </button>
-          <button className="h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition">
+          </Link>
+          <Link
+            to="/community"
+            className="h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition inline-flex items-center"
+          >
             Join the Community
-          </button>
+          </Link>
         </div>
       </div>
     </header>
@@ -168,14 +181,20 @@ function Hero() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <button className="group inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl bg-brand text-brand-foreground font-semibold text-[15px] shadow-soft hover:shadow-glow transition">
+              <Link
+                to="/community"
+                className="group inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl bg-brand text-brand-foreground font-semibold text-[15px] shadow-soft hover:shadow-glow transition"
+              >
                 Join the Community
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-              <button className="inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl border border-brand/30 bg-card text-brand font-semibold text-[15px] hover:bg-brand-soft transition">
+              </Link>
+              <Link
+                to="/spaces"
+                className="inline-flex items-center gap-2 h-13 px-6 py-3.5 rounded-2xl border border-brand/30 bg-card text-brand font-semibold text-[15px] hover:bg-brand-soft transition"
+              >
                 Explore Spaces
                 <LayoutGrid className="h-4 w-4" />
-              </button>
+              </Link>
             </div>
 
             <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
@@ -221,12 +240,12 @@ function Hero() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                to="/spaces"
                 className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand"
               >
                 View all spaces <ArrowRight className="h-3 w-3" />
-              </a>
+              </Link>
             </div>
 
             {/* Founders pill */}
@@ -265,9 +284,12 @@ function Hero() {
                   <MapPin className="h-3 w-3" /> Pune, India
                 </div>
               </div>
-              <a className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand">
+              <Link
+                to="/events"
+                className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-brand"
+              >
                 Register Now <ArrowRight className="h-3 w-3" />
-              </a>
+              </Link>
               <div className="absolute -top-3 -right-3 h-9 w-9 rounded-xl bg-brand grid place-items-center shadow-soft">
                 <CalendarDays className="h-4 w-4 text-brand-foreground" />
               </div>
@@ -290,9 +312,12 @@ function Hero() {
                     +18
                   </span>
                 </div>
-                <button className="h-8 px-3 rounded-full bg-brand-soft text-brand text-[11px] font-semibold hover:bg-brand hover:text-brand-foreground transition">
+                <Link
+                  to="/open-to-build"
+                  className="h-8 px-3 rounded-full bg-brand-soft text-brand text-[11px] font-semibold hover:bg-brand hover:text-brand-foreground transition inline-flex items-center"
+                >
                   Explore Now
-                </button>
+                </Link>
               </div>
             </div>
           </div>
