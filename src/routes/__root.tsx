@@ -87,7 +87,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Build Pune Together — Pune's Founder-First Community" },
+      {
+        name: "twitter:description",
+        content:
+          "A community-first platform for founders, builders, and dreamers to connect, collaborate, and build the future of Pune.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
