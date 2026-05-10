@@ -89,7 +89,7 @@ function Nav() {
 
         <div className="ml-auto lg:ml-0 flex items-center gap-2">
           <Link
-            to="/resources"
+            to="/login"
             className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition items-center"
           >
             Log in

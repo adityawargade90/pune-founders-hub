@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpacesRouteImport } from './routes/spaces'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as OpenToBuildRouteImport } from './routes/open-to-build'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as BuildInPublicRouteImport } from './routes/build-in-public'
@@ -30,6 +31,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const OpenToBuildRoute = OpenToBuildRouteImport.update({
   id: '/open-to-build',
   path: '/open-to-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsRoute = EventsRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/build-in-public': typeof BuildInPublicRoute
   '/community': typeof CommunityRoute
   '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
   '/open-to-build': typeof OpenToBuildRoute
   '/resources': typeof ResourcesRoute
   '/spaces': typeof SpacesRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/build-in-public': typeof BuildInPublicRoute
   '/community': typeof CommunityRoute
   '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
   '/open-to-build': typeof OpenToBuildRoute
   '/resources': typeof ResourcesRoute
   '/spaces': typeof SpacesRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/build-in-public': typeof BuildInPublicRoute
   '/community': typeof CommunityRoute
   '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
   '/open-to-build': typeof OpenToBuildRoute
   '/resources': typeof ResourcesRoute
   '/spaces': typeof SpacesRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/build-in-public'
     | '/community'
     | '/events'
+    | '/login'
     | '/open-to-build'
     | '/resources'
     | '/spaces'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/build-in-public'
     | '/community'
     | '/events'
+    | '/login'
     | '/open-to-build'
     | '/resources'
     | '/spaces'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/build-in-public'
     | '/community'
     | '/events'
+    | '/login'
     | '/open-to-build'
     | '/resources'
     | '/spaces'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   BuildInPublicRoute: typeof BuildInPublicRoute
   CommunityRoute: typeof CommunityRoute
   EventsRoute: typeof EventsRoute
+  LoginRoute: typeof LoginRoute
   OpenToBuildRoute: typeof OpenToBuildRoute
   ResourcesRoute: typeof ResourcesRoute
   SpacesRoute: typeof SpacesRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/open-to-build'
       fullPath: '/open-to-build'
       preLoaderRoute: typeof OpenToBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   BuildInPublicRoute: BuildInPublicRoute,
   CommunityRoute: CommunityRoute,
   EventsRoute: EventsRoute,
+  LoginRoute: LoginRoute,
   OpenToBuildRoute: OpenToBuildRoute,
   ResourcesRoute: ResourcesRoute,
   SpacesRoute: SpacesRoute,
