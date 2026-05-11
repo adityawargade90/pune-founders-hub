@@ -35,7 +35,7 @@ function SpacesPage() {
             className="group rounded-2xl bg-card border border-border p-5 hover:shadow-card hover:-translate-y-0.5 transition"
           >
             <div className="flex items-start gap-4">
-              <div className={`h-12 w-12 rounded-2xl bg-${s.color}/15 grid place-items-center text-2xl`}>
+              <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-2xl">
                 {s.icon}
               </div>
               <div className="flex-1 min-w-0">

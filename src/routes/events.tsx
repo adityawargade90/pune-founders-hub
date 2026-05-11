@@ -29,7 +29,7 @@ function EventsPage() {
       <div className="grid md:grid-cols-2 gap-5">
         {mockEvents.map((e) => (
           <article key={e.id} className="rounded-2xl bg-card border border-border overflow-hidden hover:shadow-card transition">
-            <div className={`h-28 bg-gradient-to-br from-${e.color} to-violet relative`}>
+            <div className="h-28 bg-gradient-to-br from-brand to-violet relative">
               <div className="absolute top-4 left-4 bg-white/95 rounded-xl p-2 text-center min-w-14 shadow-soft">
                 <div className="text-[10px] uppercase text-brand font-bold tracking-wider">{e.date.split(",")[1]?.trim().split(" ")[1] ?? "MAY"}</div>
                 <div className="text-2xl font-display leading-none text-foreground">{e.date.match(/\d+/)?.[0]}</div>
