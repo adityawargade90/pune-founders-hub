@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Users,
   Megaphone,
@@ -52,11 +52,17 @@ function Landing() {
 /* ───────────────────────────── NAV ───────────────────────────── */
 
 function Nav() {
-  const links = ["Community", "Spaces", "Open to Build", "Events", "Build in Public", "Resources"];
+  const links: { to: any; label: string }[] = [
+    { to: "/feed", label: "Feed" },
+    { to: "/spaces", label: "Spaces" },
+    { to: "/board", label: "Open to Build" },
+    { to: "/events", label: "Events" },
+    { to: "/messages", label: "Messages" },
+  ];
   return (
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/60">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center gap-8">
-        <a href="/" className="flex items-center gap-2.5 shrink-0">
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
           <Logo />
           <div className="leading-tight hidden sm:block">
             <div className="font-display text-[17px] tracking-tight">
@@ -66,27 +72,27 @@ function Nav() {
               Connect. Collaborate. Create Impact.
             </div>
           </div>
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-7 mx-auto">
           {links.map((l) => (
-            <a
-              key={l}
-              href="#"
+            <Link
+              key={l.to}
+              to={l.to}
               className="text-sm text-foreground/80 hover:text-brand transition-colors font-medium"
             >
-              {l}
-            </a>
+              {l.label}
+            </Link>
           ))}
         </nav>
 
         <div className="ml-auto lg:ml-0 flex items-center gap-2">
-          <button className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition">
+          <Link to="/login" className="hidden sm:inline-flex h-10 px-5 rounded-xl border border-brand/30 text-brand font-medium text-sm hover:bg-brand-soft transition items-center">
             Log in
-          </button>
-          <button className="h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition">
+          </Link>
+          <Link to="/onboarding" className="h-10 px-5 rounded-xl bg-brand text-brand-foreground font-medium text-sm shadow-soft hover:shadow-glow hover:opacity-95 transition flex items-center">
             Join the Community
-          </button>
+          </Link>
         </div>
       </div>
     </header>
