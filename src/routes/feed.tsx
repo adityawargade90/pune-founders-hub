@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell, Avatar } from "@/components/bpt/AppShell";
+import { OrbitalBackdrop } from "@/components/bpt/OrbitalBackdrop";
 import { mockPosts, milestoneMeta, type MilestoneType } from "@/lib/mock-data";
 import { Heart, MessageCircle, Share2, Sparkles, TrendingUp, CalendarDays, MapPin } from "lucide-react";
 
@@ -19,6 +20,13 @@ function FeedPage() {
 
   return (
     <AppShell right={<RightRail />}>
+      <section className="bpt-hero-shell p-5 mb-6">
+        <OrbitalBackdrop />
+        <div className="relative z-10">
+          <h1 className="font-display text-3xl">Founder Feed</h1>
+          <p className="text-sm text-muted-foreground mt-1">Share wins, asks, and lessons with Pune’s builders.</p>
+        </div>
+      </section>
       <Composer onPost={(p) => setPosts([p, ...posts])} />
       <div className="mt-6 space-y-4">
         {posts.map((p) => (
@@ -50,7 +58,7 @@ function Composer({ onPost }: { onPost: (p: any) => void }) {
   }
 
   return (
-    <div className="rounded-2xl bg-card border border-border shadow-soft p-5">
+    <div className="bpt-depth-card p-5">
       <div className="flex gap-3">
         <Avatar name="A" color="#7c3aed" />
         <textarea
@@ -97,7 +105,7 @@ function PostCard({ post }: { post: any }) {
   const [r, setR] = useState(post.reactions);
 
   return (
-    <article className="rounded-2xl bg-card border border-border shadow-soft p-5 hover:shadow-card transition">
+    <article className="bpt-depth-card p-5">
       <div className="flex items-start gap-3">
         <Avatar name={post.author.name} color={post.author.color} />
         <div className="flex-1 min-w-0">
@@ -143,7 +151,7 @@ function ReactBtn({ label, emoji, count, onClick }: any) {
 function RightRail() {
   return (
     <div className="sticky top-24 space-y-4">
-      <div className="rounded-2xl bg-card border border-border p-5">
+      <div className="bpt-depth-card p-5">
         <div className="flex items-center gap-2 mb-4">
           <TrendingUp className="h-4 w-4 text-brand" />
           <h3 className="font-semibold text-sm">Trending Domains</h3>
@@ -168,7 +176,7 @@ function RightRail() {
         </ul>
       </div>
 
-      <div className="rounded-2xl bg-card border border-border p-5">
+      <div className="bpt-depth-card p-5">
         <div className="flex items-center gap-2 mb-4">
           <CalendarDays className="h-4 w-4 text-mint" />
           <h3 className="font-semibold text-sm">Upcoming in Pune</h3>
@@ -183,7 +191,7 @@ function RightRail() {
         <Link to="/events" className="block mt-3 text-xs font-semibold text-brand">See all events →</Link>
       </div>
 
-      <div className="rounded-2xl bg-gradient-to-br from-brand-soft to-card border border-border p-5">
+      <div className="bpt-depth-card bg-gradient-to-br from-brand-soft to-card p-5">
         <Sparkles className="h-5 w-5 text-brand mb-2" />
         <div className="font-semibold text-sm">Made with 💜 in Pune</div>
         <div className="text-xs text-muted-foreground mt-1">700+ founders building together.</div>

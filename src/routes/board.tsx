@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell } from "@/components/bpt/AppShell";
+import { OrbitalBackdrop } from "@/components/bpt/OrbitalBackdrop";
 import { mockBoard } from "@/lib/mock-data";
 import { Briefcase, Users, Sparkles, Plus, ArrowRight } from "lucide-react";
 
@@ -28,15 +29,18 @@ function BoardPage() {
 
   return (
     <AppShell>
-      <div className="flex items-end justify-between mb-6">
-        <div>
-          <h1 className="font-display text-3xl">Open to Build</h1>
-          <p className="text-sm text-muted-foreground mt-1">Co-founders, hires, freelancers and beta testers.</p>
+      <section className="bpt-hero-shell p-5 mb-6">
+        <OrbitalBackdrop />
+        <div className="relative z-10 flex items-end justify-between">
+          <div>
+            <h1 className="font-display text-3xl">Open to Build</h1>
+            <p className="text-sm text-muted-foreground mt-1">Co-founders, hires, freelancers and beta testers.</p>
+          </div>
+          <button className="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-brand text-brand-foreground text-sm font-semibold">
+            <Plus className="h-4 w-4" /> Post opportunity
+          </button>
         </div>
-        <button className="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-brand text-brand-foreground text-sm font-semibold">
-          <Plus className="h-4 w-4" /> Post opportunity
-        </button>
-      </div>
+      </section>
 
       <div className="flex gap-2 overflow-x-auto pb-2 mb-5 -mx-1 px-1">
         {filters.map((f) => (
@@ -54,7 +58,7 @@ function BoardPage() {
 
       <div className="space-y-4">
         {list.map((b) => (
-          <article key={b.id} className="rounded-2xl bg-card border border-border p-5 hover:shadow-card transition">
+          <article key={b.id} className="bpt-depth-card p-5">
             <div className="flex flex-wrap items-start gap-3">
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">

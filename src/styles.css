@@ -133,3 +133,54 @@
 }
 .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 .animate-float-slower { animation: float-slow 8s ease-in-out infinite; }
+
+@keyframes orb-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@layer components {
+  .bpt-hero-shell {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklab, var(--color-border) 80%, white);
+    border-radius: 1.25rem;
+    background:
+      linear-gradient(160deg, color-mix(in oklab, var(--color-brand-soft) 74%, transparent), transparent 60%),
+      color-mix(in oklab, var(--color-card) 92%, white);
+    box-shadow: var(--shadow-card);
+  }
+
+  .bpt-depth-card {
+    border: 1px solid color-mix(in oklab, var(--color-border) 85%, white);
+    border-radius: 1rem;
+    background: color-mix(in oklab, var(--color-card) 92%, white);
+    box-shadow: 0 14px 30px -20px oklch(0.3 0.08 290 / 0.5);
+    transform-style: preserve-3d;
+    transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+  }
+
+  .bpt-depth-card:hover {
+    transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 0 24px 45px -25px oklch(0.3 0.08 290 / 0.6);
+    border-color: color-mix(in oklab, var(--color-brand) 25%, var(--color-border));
+  }
+
+  .bpt-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(2px);
+    mix-blend-mode: screen;
+    animation: orb-spin 18s linear infinite;
+    transform-origin: center;
+  }
+
+  .bpt-orb--pulse {
+    animation: pulse-soft 6s ease-in-out infinite;
+  }
+}

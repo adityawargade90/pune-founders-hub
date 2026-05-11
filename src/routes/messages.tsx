@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell, Avatar } from "@/components/bpt/AppShell";
+import { OrbitalBackdrop } from "@/components/bpt/OrbitalBackdrop";
 import { mockThreads } from "@/lib/mock-data";
 import { Send, Search } from "lucide-react";
 
@@ -27,8 +28,14 @@ function MessagesPage() {
 
   return (
     <AppShell>
-      <h1 className="font-display text-3xl mb-6">Messages</h1>
-      <div className="rounded-2xl bg-card border border-border overflow-hidden grid md:grid-cols-[280px_1fr] h-[620px]">
+      <section className="bpt-hero-shell p-5 mb-6">
+        <OrbitalBackdrop />
+        <div className="relative z-10">
+          <h1 className="font-display text-3xl">Messages</h1>
+          <p className="text-sm text-muted-foreground mt-1">Move fast with clean DMs, intros, and quick follow-ups.</p>
+        </div>
+      </section>
+      <div className="bpt-depth-card overflow-hidden grid md:grid-cols-[280px_1fr] h-[620px]">
         {/* Threads */}
         <div className="border-r border-border flex flex-col">
           <div className="p-3 border-b border-border">

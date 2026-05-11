@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/bpt/AppShell";
+import { OrbitalBackdrop } from "@/components/bpt/OrbitalBackdrop";
 import { mockSpaces } from "@/lib/mock-data";
 import { Users, Plus } from "lucide-react";
 
@@ -16,15 +17,18 @@ export const Route = createFileRoute("/spaces")({
 function SpacesPage() {
   return (
     <AppShell>
-      <div className="flex items-end justify-between mb-6">
-        <div>
-          <h1 className="font-display text-3xl">Community Spaces</h1>
-          <p className="text-sm text-muted-foreground mt-1">12+ domain spaces. Join the ones that fit you.</p>
+      <section className="bpt-hero-shell p-5 mb-6">
+        <OrbitalBackdrop />
+        <div className="relative z-10 flex items-end justify-between">
+          <div>
+            <h1 className="font-display text-3xl">Community Spaces</h1>
+            <p className="text-sm text-muted-foreground mt-1">12+ domain spaces. Join the ones that fit you.</p>
+          </div>
+          <button className="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-brand text-brand-foreground text-sm font-semibold">
+            <Plus className="h-4 w-4" /> Propose space
+          </button>
         </div>
-        <button className="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-brand text-brand-foreground text-sm font-semibold">
-          <Plus className="h-4 w-4" /> Propose space
-        </button>
-      </div>
+      </section>
 
       <div className="grid sm:grid-cols-2 gap-4">
         {mockSpaces.map((s) => (
@@ -32,7 +36,7 @@ function SpacesPage() {
             key={s.id}
             to="/spaces/$spaceId"
             params={{ spaceId: s.id }}
-            className="group rounded-2xl bg-card border border-border p-5 hover:shadow-card hover:-translate-y-0.5 transition"
+            className="bpt-depth-card group p-5"
           >
             <div className="flex items-start gap-4">
               <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-2xl">
